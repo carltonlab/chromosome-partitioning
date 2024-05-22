@@ -1,0 +1,17 @@
+Instruction to recreate all the data from Figure 1:
+
+1. Get your nuclei and make the 3D model for the chromosomes using the python script for imagej: trace_and_export_rois.py
+    This create the sbs_rois.zip files that can be used for making the 3d models and straightening the chromosomes
+2. Straighten the chromosomes by running the imagej script: straighten_traced_chromosomes.ijm
+    This creates the _str.tif files that most of other scripts actually use as a basis. 
+3. Get the crossover coordinates by running the imagej script: c012_get_straightened_chromosomes_co_position.ijm
+    This creates the _str_roi.zip files with the crossover positions, the short arm and long arm rois and could also flip the images so that the short arm is on the left. 
+    It also creates sum projections of the iamges.
+4. Normalize the sum projected images created in step 3 by running the python script: c012_normalize_straightened_chromosomes_by_channel.py
+    This creates the _normalized_sum_proj.tif images used in other scripts. 
+5. Align the chromosomes by running the python script: c012_align_chromosomes_by_crossover_position.py
+    This will get the sorted images used in figure 1.
+6. Get the short and long arm average intensity measurements by running the python script: c012_get_arm_differences.py
+    This will get the csv files with the short and long arm average intensities for all of the channels in the images. 
+7. To get the plots, you need to run the python script: c012_plot_short_and_long_arm_average_intensities.py
+    This creates the plots based on the csv files obtained in step 6.

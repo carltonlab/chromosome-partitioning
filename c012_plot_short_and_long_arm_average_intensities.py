@@ -1,3 +1,19 @@
+#region ########################################################## DESCRIPTION ####################################################################
+
+"""
+This script plots the short and long arm average intensities for each channel in the csv files. 
+It gets a directory (the directory where the script is executed from) and looks for files with the name ending with 'with_short_arm.csv'.
+
+For this to work, you need to have run the script c012_get_arm_differences.py first, which will create the csv files with the short arm values.
+It will take many csv files and plot them individually so you can combine all the .csv files in one directory from different genotypes, experiments, etc. 
+
+The script will plot the short arm values in magenta and the long arm values in blue. Please modify as needed. 
+
+"""
+
+
+#endregion ####################################################### END OF DESCRIPTION #############################################################
+
 #import pandas
 import os
 import numpy as np
@@ -5,7 +21,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #get the directory string
-main_directory = "/extra_data/syp1_paper/figure1/"
+main_directory = os.getcwd()
 
 #if name is main
 if __name__ == '__main__':
@@ -33,7 +49,7 @@ if __name__ == '__main__':
     file_list = os.listdir(main_directory)
 
     #get the csv files
-    csv_files = [file for file in file_list if file.endswith('.csv')]
+    csv_files = [file for file in file_list if file.endswith('with_short_arm.csv')]
 
     #print the csv files
     print(f'the csv files are: {csv_files}')  

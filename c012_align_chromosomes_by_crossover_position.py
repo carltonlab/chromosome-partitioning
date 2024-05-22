@@ -1,3 +1,23 @@
+#region ####################################################### DESCRIPTION ########################################################
+
+"""
+This script aligns the chromosomes in two ways:
+1. By the crossover position (The crossovers are all lined up and chromosomes sorted by the short arm/long arm ratio)
+2. By the short arm length (The short arms start are all lined up at the left and chromosomes sorted by the short arm length)
+
+In all of the cases, the chromsoomes are Y summed (each chromosome is only 1 pixel tall in the Y direction and the X direction is the chromosome length)
+
+The script will take a directory where it is and will look for files with the _str.tif extension. It will then look for the corresponding _rois.zip file and _normalized_sum_proj.tif file. 
+This means that in order for this to work, you need to have run the c012_get_straightened_chromosomes_co_position.ijm script first and later the 
+c012_normalize_straightened_chromosomes_by_channel.py script.
+
+The produced images are called:
+1. c012_normalized_sum_proj_aligned_by_crossover_y_summed.tif
+2. c012_normalized_sum_proj_sorted_by_short_arm_length_y_summed_left_aligned.tif
+"""
+
+#endregion #################################################### DESCRIPTION ########################################################
+
 #region ####################################################### IMPORTS ##########################################################
 
 import roifile

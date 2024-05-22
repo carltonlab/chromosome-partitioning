@@ -1,3 +1,14 @@
+#This script is used to trace and export the traces as rois used as part of the process of 
+#straightening chromosomes. 
+
+#For it to work, you need to have SNT plugin installed and running in Fiji.
+#Then open the script in the fiji script editor and run it.
+#No image should be open.
+#The script will open the image, wait for the user to trace the chromosome and then export 
+#the traces as rois. 
+
+#the output will be a .traces file (used in SNT) and a .zip file with the rois.
+
 #@ SNTService snt
 
 #getting the libraries
@@ -116,8 +127,3 @@ image_instance.close()
 
 #close the window
 image_window.close()
-
-
-
-
-

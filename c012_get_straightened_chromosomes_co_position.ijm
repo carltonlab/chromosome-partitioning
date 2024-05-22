@@ -1,3 +1,33 @@
+//############################# DESCRIPTION ###################################################
+
+//This script will let you get the straightened chromosome crossover positions. 
+
+//This is used for other scripts that require the crossover sites coordinates. 
+
+//It will only work with files ending in _str.tif
+
+//If multiple points are selected, only the first one is used, meaning it is only useful for single 
+//CO chromosomes. 
+
+//It will also flip the chromosome so that the short arm is aligned to the left. Be careful when using
+//as it will replace the previous file. 
+
+//The otuput is a file with the .tif extension replaced with _rois.zip
+
+//It asks for a directory with the _str.tif files and then makes you process all of them in batch. 
+
+//It also creates a sum projection of the image and saves it as _sum_proj.tif
+
+//Open this script in the fiji script editor and run it to use. 
+
+//############################# END DESCRIPTION ###############################################
+
+
+
+
+
+
+
 //Script to get the crossover site position for the straightened chromosomes
 
 //set the expandable arrays

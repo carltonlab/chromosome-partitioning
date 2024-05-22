@@ -3,6 +3,17 @@
 """
 This script will get the corresponding roi file from a straightened chromosome or nuclei and make the 3D model from it
 using pyplot, roifile.
+
+Simply run the script from the command line with the corresponding arguments. 
+
+The arguments are:
+    -d: The main directory to use. If not provided, the current directory will be used.
+    -f: The files to use. If not provided, all the files in the main directory will be used.
+    -e: The strings to exclude from the files. If not provided, all the files will be used.
+
+The exclude argument is useful when you have a lot of files in the directory and you want to exclude some of them.
+Simply find the string that is common in the files you want to exclude and add it to the exclude argument.
+
 """
 
 #endregion ##################################### END DESCRIPTION ##############################################
@@ -56,7 +67,6 @@ tick_step_in_microns = 0.5
 
 
 #region ######################################## CLASSES ######################################################
-
 
 
 #endregion ##################################### END CLASSES ##################################################

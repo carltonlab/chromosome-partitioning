@@ -1,3 +1,9 @@
+//This script uses the exported rois from the "trace_and_export_rois.py" to straighten the chromosomes.
+//To run, open the script on the fiji script editor and run it. 
+//It'll ask you for the file you with to straighten. Please note the the file names of the 
+//image and the rois should match ("File should be a .tif image and the rois share the name
+//of the image replacing the .tif extension with _rois.zip)
+
 //to use the script make sure that the file extension is correct
 sbs_file_extension = ".tif";
 

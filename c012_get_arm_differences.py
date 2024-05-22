@@ -1,3 +1,35 @@
+#region ##################################### DESCRIPTION #############################################
+
+"""
+This script is used to measure the arm differences of the straightened chromosomes after:
+
+1. The crossover sites have been obtained (c012_get_straightened_chromosomes_co_position.ijm)
+2. The chromosomes have been sum projected and normalized (c012_normalize_straightened_chromosomes_by_channel.py)
+
+The script will measure the average intensity of the short and long arms of the chromosomes and calculate the difference between them.
+It will also plot the differences and save the plot as a .png and .pdf file.
+
+It will create a csv file with the following values:
+    1)file_name
+    2)short_arm_lenth
+    N)channel_short_arm_average_intensity
+    N)channel_long_arm_average_intensity
+    *The N depends on the number of channels being measured. It will do all channels in the image. 
+
+The script will also save a pickle file that can be read as a dictionary in python with many
+parameters for the images. Could be useful for further analysis.
+
+The script will get the directory where it is located and get all the files that end with _str.tif
+
+Make sure that the _str_rois.zip files are in the same directory as the _str.tif files.
+Make sure that the _str_sum_proj.tif files are in the same directory as the _str.tif files.
+Make sure that the _str_normalized_sum_proj.tif files are in the same directory as the _str.tif files.
+
+"""
+
+#endregion ################################## END DESCRIPTION #########################################
+
+
 #region ##################################### IMPORTS #################################################
 
 from matplotlib import pyplot as plt
@@ -227,7 +259,7 @@ if __name__ == "__main__":
     #if there are no files
     if len(working_file_list) == 0:
         #print that there are no files
-        print("No files to align by crossover. Make sure your files end with _cut_str.tif")
+        print("No files to align by crossover. Make sure your files end with _str.tif")
         #exit the program
         sys.exit(0)
 
