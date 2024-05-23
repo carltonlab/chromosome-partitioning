@@ -1,0 +1,33 @@
+Instruction to recreate all the data from Figure 1:
+
+1. Get your nuclei and make the 3D model for the chromosomes using the python script for imagej: "trace_and_export_rois.py"
+    This create the sbs_rois.zip files that can be used for making the 3d models and straightening the chromosomes
+2. Straighten the chromosomes by running the imagej script: "straighten_traced_chromosomes.ijm"
+    This creates the _str.tif files that most of other scripts actually use as a basis.
+    The _str files can also be zero clamped if they have negative values form the cromagnon reconstruction. 
+3. Get the crossover coordinates by running the imagej script: "get_multiple_co_coords.ijm"
+    This creates the _str_co_coords.csv files with the crossover positions.
+4. Split the megasomes into the co1 and co2 files using the "c018_split_megasomes.ijm"
+    This will create two files from the _str.tif for the co1 and co2 simulating "wild type" chromosomes
+    from the megasome image.
+5. Make the sum projections using the script: "c018_megasomes_make_sum_projection.ijm"
+    This makes the megasomes and the split megasomes sum projections. 
+6. Obtain the megasome observed categories by running the script: "c018_categorize_chromosomes.ijm"
+    This opens each sum projected image and the user is able to categorize the chromosomes 
+    to get the observed category that is lated used for the plotting and contrasted to the 
+    predicted category. 
+7. Make the plot using the script "c018_megasome_flip_triangle_plot_single_region.py"
+    This will make the triangle plot with all the megasomes.
+8. Normalize the megasome channels for the image combination using the script: "c018_normalize_sum_projections.ijm"
+    The user will make thresholds for the restriction site of the proteins in the channels and the 
+    entire channel will be normalized to the average intensity of the threshold to have comparable image values
+    for the combination of the megasomes.
+9. Make the combined image by running the script: "c018_combine_roi_normalized_split_megasomes_images.py"
+    This will create the combined image with the normalized split megasomes. 
+10. Measure the split megasome regions by running the script: "c018_measure_split_megasomes_arms.ijm"
+    This will measure the split megasome arms, create the rois needed and save the results as a csv file. 
+11. Make the plot short arm differences by running the script: "c018_plot_short_long_arm_dirrecence.py"
+    This will create the plot comparing the short and long arm differences. 
+
+
+
