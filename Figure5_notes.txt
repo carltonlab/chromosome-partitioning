@@ -1,0 +1,42 @@
+Instruction to recreate all the data from Figure 5:
+
+1. Get the gonad regions of the photo-conversion experiment and separate the green and red channels. Make the terminations of their names 
+with "_green.tif" and "_red.tif" accordingly.(These channels are the 488 and 561 channels).
+2. Make the composite mask from the green channel (Chromosome SC axis) by running the script: "c069_create_classifiers_for_green_channels.ijm"
+    Run the script on the imagej script editor. Follow the steps. Read the description of in the script file to learn how to use it. 
+3. Make the red and green channels background subtraction. Crop the photoconverted nuclei. Both things
+are handled by the script: "c069_background_subtraction_and_sbs_cropping.ijm"
+    This is a complicated script that needs some experience to use. Follow the prompts.
+    All the relevant masks, segmented images, background subtracted channels, rois and cropped nuclei
+    will be saved automatically. If you're doing the pre-bleach time point, make sure to have the t0min images on the same directories
+    to identify the photoconverted nuclei. 
+4. Make the straightened chrommosomes from the cropped nuclei ending in "_sbsN.tif" using the scripts: "trace_and_export_rois.py" and "straigthen_traced_chromosomes.ijm"
+both running from the imagej script editor. 
+    This creates the "_str.tif" images and corresponding "_rois.zip" files, similar to the Figure1 and Figure4 straightened chromosomes. 
+5. Make the sum projections of the straightened chromosomes and save them with the extension "_sum_proj.tif"
+    We did this manually.
+6. Flip the chromosomes so that the photoconverted area is at the left, get the crossover area and calculate the sum profile (This sum profile is NOT used for the paper, it is just
+some extra data that might be useful later) using the script: "c069_str_files_flip_get_crossover.ijm"
+    The flipped chromosomes and crossover area have the same file name with the string "_reversed_" in the filename. 
+7. Get the average projection images for the straightened chromosomes and the average profile (This profile is the one used
+for the paper's figure5) using the script: "c069_make_avg_images_and_profiles_batch.py"
+    The profile is not normalized yet and the file is in .csv format.
+8. Get the average projeciton images for each individual straightened chromosome and the average profile of there average projection 
+images by running the script: "c069_make_avg_images_and_profiles_batch.py".
+    This creates files with the extension "_avg_proj.tif" from the "_str.tif" images in the directory.
+    This also creates the .csv file with the average profile.
+    Both of these file types are created in a separate directory called "avg_profiles" to keep the "_sum_proj_profile.csv" and the "_avg_proj_profile.csv" separate.
+9. Get the average combined images of all the chromosomes by time point by running the script: "c069_make_combined_images_averages.py"
+    This needs all the "_avg_proj.tif" files created from step 8. to be in a single directory with no other ".tif" files in it. 
+    In the same directory, the "_avg_proj_profile.csv" files need to be included.
+    Finally, the text file: "c069_file_timepoint_sort_order.txt" needs to be in the same directory with the images and profiles.
+    The script creates the averaged images and saves them in a "results/" directory. Each time point is an individual image.
+10. The normalized images have the crossover mid point site designates, they are normalized and aligned by the script: "c069_combine_avg_images_results.ijm"
+    The resulting image is the one used for Fig. 5.
+11. The plot profiles are created by running the script "c069_plots_combine_by_time_point.py" in the directory with the combined "avg_proj_profile.csv".
+    This creates the normalized data frames and saves them as .csv files
+    It also creates the plots for each time point for each channel and saves them as .png file and .pdf files.
+12. To make the sliding window analysis, run the script: "c069_sliding_window_analysis.py" in the directory with the normalized data frames generated in
+step 11. 
+    Follow the script's instructions. 
+    For the paper, we used 1 micron to the left of the crossover, 1 micron to the right of the crossover, and 1 micron to the crawling parameter left and right. 

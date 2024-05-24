@@ -1,0 +1,5 @@
+The predictions for model 3 are created by running the script: "model_prediction.py"
+
+This will create the movies for the predictions. It requires ffmpeg installed to work. 
+
+To learn how to use, get the arguments help with the optional argument "-h" or read the file description. 
